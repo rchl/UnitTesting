@@ -11,10 +11,10 @@ def write_log(txt):
 # sys.stderr = StdioSplitter(sys.stderr, rf)
 
 
-try:
-    write_log("run_scheduler")
-    run_scheduler()
+def plugin_loaded():
+    try:
+        write_log("run_scheduler")
+        run_scheduler()
 
-except Exception as e:
-    with open("c:/st/out.txt", "a+") as f:
+    except Exception as e:
         write_log(str(e))

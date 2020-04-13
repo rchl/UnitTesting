@@ -5,6 +5,11 @@ import sublime
 import sublime_plugin
 from .utils import JsonFile
 
+def write_log(txt):
+    import sys
+    if sys.platform.startswith("win"):
+        with open("c:/st/out.txt", "a+") as f:
+            f.write(txt + "\n")
 
 class Unit:
 
@@ -18,11 +23,7 @@ class Unit:
         self.coverage = s.get('coverage', False)
 
     def run(self):
-        def write_log(txt):
-            import sys
-            if sys.platform.startswith("win"):
-                with open("c:/st/out.txt", "a+") as f:
-                    f.write(txt + "\n")
+
 
         write_log("running schedular")
 
@@ -65,10 +66,17 @@ class Scheduler:
 
     def load_schedule(self):
         self.schedule = self.j.load()
+        write_log(str(self.schedule))
+
         for s in self.schedule:
             self.units.append(Unit(s))
 
+        write_log(str(self.units))
+
+
     def run(self):
+        write_log("scheduler.run")
+
         self.load_schedule()
         for u in self.units:
             u.run()
@@ -82,11 +90,6 @@ class UnitTestingRunSchedulerCommand(sublime_plugin.ApplicationCommand):
     ready = False
 
     def run(self):
-        def write_log(txt):
-            import sys
-            if sys.platform.startswith("win"):
-                with open("c:/st/out.txt", "a+") as f:
-                    f.write(txt + "\n")
 
         write_log("about to run schedular")
 

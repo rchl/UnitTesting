@@ -65,6 +65,8 @@ function addSchedule {
 
     [System.IO.File]::WriteAllText(
         $jpath, (convertto-json $schedule), $UTF8Encoding)
+
+    get-content $jpath
 }
 
 

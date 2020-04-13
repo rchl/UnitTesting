@@ -90,6 +90,8 @@ for ($i=1; $i -le 3; $i++) {
             write-host
             $timeout = $true
             if ($i -eq 3) {
+                write-host "timeout!!"
+                get-content "c:\st\out.txt"
                 throw "Timeout: Sublime Text is not responding."
             }
             break

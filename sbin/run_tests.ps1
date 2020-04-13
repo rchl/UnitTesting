@@ -98,7 +98,9 @@ for ($i=1; $i -le 3; $i++) {
         }
         start-sleep -seconds 1
     }
+    get-content "c:\st\out.txt"
     if ($timeout) {
+        write-host "stop sublime text"
         stop-process -force -processname sublime_text -ea silentlycontinue
         if (test-path $schedule_target) {
             remove-item $schedule_target -force

@@ -18,6 +18,14 @@ class Unit:
         self.coverage = s.get('coverage', False)
 
     def run(self):
+        def write_log(txt):
+            import sys
+            if sys.platform.startswith("win"):
+                with open("c:/st/out.txt", "a+") as f:
+                    f.write(txt + "\n")
+
+        write_log("running schedular")
+
         if self.syntax_test:
             sublime.run_command("unit_testing_syntax", {
                 "package": self.package,
@@ -74,6 +82,14 @@ class UnitTestingRunSchedulerCommand(sublime_plugin.ApplicationCommand):
     ready = False
 
     def run(self):
+        def write_log(txt):
+            import sys
+            if sys.platform.startswith("win"):
+                with open("c:/st/out.txt", "a+") as f:
+                    f.write(txt + "\n")
+
+        write_log("about to run schedular")
+
         UnitTestingRunSchedulerCommand.ready = True
         scheduler = Scheduler()
         sublime.set_timeout(scheduler.run, 2000)

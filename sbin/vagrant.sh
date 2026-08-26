@@ -73,9 +73,9 @@ RunTests() {
 
     UT="$STP/UnitTesting"
     if [ -z "$1" ]; then
-        python "$UT/sbin/run.py" "$PACKAGE"
+        python3 "$UT/sbin/run.py" "$PACKAGE"
     else
-        python "$UT/sbin/run.py" "$1" "$PACKAGE"
+        python3 "$UT/sbin/run.py" "$1" "$PACKAGE"
     fi
     killall sublime_text
 }

@@ -21,9 +21,9 @@ runs:
         PACKAGE="${PACKAGE_FROM_INPUTS:-$PACKAGE}"
 
         if [ "${{ inputs.coverage }}" == "true" ]; then
-          python "$GITHUB_ACTION_PATH/run_tests.py" "$PACKAGE" --coverage
+          python3 "$GITHUB_ACTION_PATH/run_tests.py" "$PACKAGE" --coverage
         else
-          python "$GITHUB_ACTION_PATH/run_tests.py" "$PACKAGE"
+          python3 "$GITHUB_ACTION_PATH/run_tests.py" "$PACKAGE"
         fi
       shell: bash
     - if: inputs.codecov-upload == 'true'

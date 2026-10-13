@@ -194,7 +194,7 @@ class BaseUnittestingCommand(sublime_plugin.WindowCommand):
         if not os.path.isabs(output):
             output = os.path.join(sublime.packages_path(), package, output)
         os.makedirs(os.path.dirname(output), exist_ok=True)
-        return open(output, "w", encoding="utf-8")
+        return open(output, "w", encoding="utf-8", buffering=1)
 
     def load_unittesting_settings(self, package, options):
         file_name = os.path.join(sublime.packages_path(), package, "unittesting.json")
